@@ -19,7 +19,15 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Gym App'),
+          centerTitle: true,
+          leading: Icon(Icons.login),
+          actions: [Text('adf'), Icon(Icons.login)],
+          backgroundColor: Colors.teal,
+        ),
+      ),
     );
   }
 }
