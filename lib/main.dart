@@ -4,6 +4,9 @@ void main() {
   runApp(const MyApp());
 }
 
+//Null Safety
+String? title = 'Gym app';
+
 //stateless
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,29 +24,11 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Gym App'),
+          title: Text(title!),
           centerTitle: true,
           // leading: Icon(Icons.login),
           // actions: [Text('adf'), Icon(Icons.login)],
           // backgroundColor: Colors.teal,
-        ),
-        drawer: SafeArea(
-          child: Drawer(
-            child: Column(
-              children: [
-                DrawerHeader(child: Text('Drawer')),
-                ListTile(title: Text('Logout')),
-              ],
-            ),
-          ),
-        ),
-        floatingActionButton: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
-            SizedBox(height: 10.0),
-            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
-          ],
         ),
         bottomNavigationBar: NavigationBar(
           destinations: [
@@ -51,7 +36,7 @@ class MyApp extends StatelessWidget {
             NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
           ],
           onDestinationSelected: (int value) {},
-          selectedIndex: 1,
+          selectedIndex: 0,
         ),
       ),
     );
