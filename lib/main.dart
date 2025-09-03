@@ -7,14 +7,19 @@ void main() {
 }
 
 //statefull (can refresh)
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: isDarkModeNotifier,
-      builder: (context, value, child) {
+      builder: (context, isDarkMode, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           darkTheme: ThemeData.dark(),
-          themeMode: value ? ThemeMode.dark : ThemeMode.light,
+          themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
           home: WidgetTree(),
         );
       },

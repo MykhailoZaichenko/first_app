@@ -22,8 +22,14 @@ class WidgetTree extends StatelessWidget {
             onPressed: () {
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
             },
-            icon: Icon(
-              isDarkModeNotifier.value ? Icons.dark_mode : Icons.light_mode,
+            icon: ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder:
+                  (BuildContext context, dynamic isDarkMode, Widget? child) {
+                    return Icon(
+                      isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                    );
+                  },
             ),
           ),
         ],
