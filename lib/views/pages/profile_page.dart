@@ -10,6 +10,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   TextEditingController controller = TextEditingController();
   bool? isChenked = false;
+  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
             },
           ),
           Text(controller.text),
-          Checkbox(
+          Checkbox.adaptive(
             tristate: true,
             value: isChenked,
             onChanged: (bool? value) {
@@ -36,13 +37,30 @@ class _ProfilePageState extends State<ProfilePage> {
               });
             },
           ),
-          CheckboxListTile(
+          CheckboxListTile.adaptive(
             tristate: true,
             title: Text('Click me'),
             value: isChenked,
             onChanged: (bool? value) {
               setState(() {
                 isChenked = value;
+              });
+            },
+          ),
+          Switch.adaptive(
+            value: isSwitched,
+            onChanged: (value) {
+              setState(() {
+                isSwitched = value;
+              });
+            },
+          ),
+          SwitchListTile.adaptive(
+            title: Text('Switch me'),
+            value: isSwitched,
+            onChanged: (value) {
+              setState(() {
+                isSwitched = value;
               });
             },
           ),
