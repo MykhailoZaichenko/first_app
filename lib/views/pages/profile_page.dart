@@ -12,6 +12,7 @@ class _ProfilePageState extends State<ProfilePage> {
   bool? isChenked = false;
   bool isSwitched = false;
   double sliderValue = 0.0;
+  String? menuItem = 'e1';
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,6 +20,19 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
+            DropdownButton(
+              value: menuItem,
+              items: [
+                DropdownMenuItem(value: 'e1', child: Text('ELement 1')),
+                DropdownMenuItem(value: 'e2', child: Text('ELement 2')),
+                DropdownMenuItem(value: 'e3', child: Text('ELement 3')),
+              ],
+              onChanged: (String? value) {
+                setState(() {
+                  menuItem = value;
+                });
+              },
+            ),
             TextField(
               controller: controller,
               decoration: InputDecoration(
@@ -88,17 +102,34 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               child: Image.asset('assets/images/bg.jpg'),
             ),
-            InkWell(
-              splashColor: Colors.teal,
-              onTap: () {
-                print('Image tapped');
-              },
-              child: Container(
-                height: 200,
-                width: double.infinity,
-                color: Colors.white12,
+            Container(
+              margin: EdgeInsets.all(20),
+              child: InkWell(
+                splashColor: Colors.teal,
+                onTap: () {
+                  print('Image tapped');
+                },
+                child: Container(
+                  height: 200,
+                  width: double.infinity,
+                  color: Colors.white12,
+                ),
               ),
             ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              ),
+              child: Text('Submit'),
+            ),
+            FilledButton(onPressed: () {}, child: Text('Submit')),
+            TextButton(onPressed: () {}, child: Text('Submit')),
+            OutlinedButton(onPressed: () {}, child: Text('Submit')),
+            CloseButton(),
+            BackButton(),
           ],
         ),
       ),
