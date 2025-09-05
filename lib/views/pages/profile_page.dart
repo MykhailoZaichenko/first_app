@@ -82,8 +82,23 @@ class _ProfilePageState extends State<ProfilePage> {
                 : sliderValue == 100
                 ? Text('Slider is at maximum')
                 : Text('Slider value: $sliderValue'),
-            Image.asset('assets/images/bg.jpg'),
-            Image.asset('assets/images/bg.jpg'),
+            GestureDetector(
+              onTap: () {
+                print('Image tapped');
+              },
+              child: Image.asset('assets/images/bg.jpg'),
+            ),
+            InkWell(
+              splashColor: Colors.teal,
+              onTap: () {
+                print('Image tapped');
+              },
+              child: Container(
+                height: 200,
+                width: double.infinity,
+                color: Colors.white12,
+              ),
+            ),
           ],
         ),
       ),
