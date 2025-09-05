@@ -11,6 +11,7 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController controller = TextEditingController();
   bool? isChenked = false;
   bool isSwitched = false;
+  double sliderValue = 0.0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,6 +62,17 @@ class _ProfilePageState extends State<ProfilePage> {
             onChanged: (value) {
               setState(() {
                 isSwitched = value;
+              });
+            },
+          ),
+          Slider.adaptive(
+            min: 0,
+            max: 100,
+            divisions: 10,
+            value: sliderValue,
+            onChanged: (double value) {
+              setState(() {
+                sliderValue = value;
               });
             },
           ),
