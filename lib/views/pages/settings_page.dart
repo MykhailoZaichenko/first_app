@@ -141,6 +141,63 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 child: Text('Open snackbar'),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AboutDialog(
+                          applicationName: 'First app',
+                          applicationVersion: '1.0.0',
+                          applicationIcon: Icon(Icons.account_tree),
+                          children: [Text('This is a simple app')],
+                        );
+                      },
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  ),
+                  child: Text('Open AboutDialog'),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text('Alert Dialog'),
+                        content: Text('This is an alert dialog'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                ),
+                child: Text('Open AlertDialog'),
+              ),
               FilledButton(onPressed: () {}, child: Text('Submit')),
               TextButton(onPressed: () {}, child: Text('Submit')),
               OutlinedButton(onPressed: () {}, child: Text('Submit')),
