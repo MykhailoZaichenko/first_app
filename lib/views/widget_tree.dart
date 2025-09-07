@@ -1,8 +1,9 @@
 import 'package:first_app/data/notiers.dart';
 import 'package:first_app/views/pages/home_page.dart';
-import 'package:first_app/views/pages/profile_page.dart';
+import 'package:first_app/views/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/profile_page.dart';
 import 'widgets/navbar_widget.dart';
 
 String? title = 'Gym app';
@@ -31,6 +32,19 @@ class WidgetTree extends StatelessWidget {
                     );
                   },
             ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SettingsPage();
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.settings),
           ),
         ],
       ),
