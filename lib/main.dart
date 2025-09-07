@@ -1,5 +1,5 @@
 import 'package:first_app/data/notiers.dart';
-import 'package:first_app/views/widget_tree.dart';
+import 'package:first_app/views/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
           ),
           darkTheme: ThemeData.dark(),
           themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          home: WidgetTree(),
+          home: WelcomePage(),
         );
       },
     );

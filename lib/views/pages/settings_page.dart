@@ -1,4 +1,3 @@
-import 'package:first_app/views/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
@@ -126,13 +125,21 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      duration: Duration(seconds: 5),
+                      content: Text('Hello from snackbar'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   foregroundColor: Colors.white,
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
-                child: Text('Submit'),
+                child: Text('Open snackbar'),
               ),
               FilledButton(onPressed: () {}, child: Text('Submit')),
               TextButton(onPressed: () {}, child: Text('Submit')),
