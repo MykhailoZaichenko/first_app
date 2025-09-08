@@ -165,6 +165,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   child: Text('Open AboutDialog'),
                 ),
               ),
+              Divider(color: Colors.teal, thickness: 5.0, endIndent: 200.0),
+              Container(height: 50.0, child: VerticalDivider()),
               ElevatedButton(
                 onPressed: () {
                   showDialog(
