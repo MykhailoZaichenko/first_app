@@ -1,3 +1,4 @@
+import 'package:first_app/views/widget_tree.dart';
 import 'package:first_app/views/widgets/hero_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
   // @override
   // void initState() {
   //   print('inti state called');
@@ -18,7 +20,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   dispose() {
-    controller.dispose();
+    controllerEmail.dispose();
+    controllerPassword.dispose();
     super.dispose();
   }
 
@@ -31,15 +34,50 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             HeroWidget(title: 'Login'),
+            SizedBox(height: 20.0),
             TextField(
-              controller: controller,
+              controller: controllerEmail,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your name',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                hintText: 'Enter username',
+                labelText: 'Username',
               ),
               onEditingComplete: () {
                 setState(() {});
               },
+            ),
+            SizedBox(height: 10.0),
+            TextField(
+              controller: controllerPassword,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                hintText: 'Enter paswsword',
+                labelText: 'PasswordS',
+              ),
+              onEditingComplete: () {
+                setState(() {});
+              },
+            ),
+            SizedBox(height: 20.0),
+            FilledButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const WidgetTree();
+                    },
+                  ),
+                );
+              },
+              style: FilledButton.styleFrom(
+                minimumSize: Size(double.infinity, 50.0),
+              ),
+              child: const Text("Log In"),
             ),
           ],
         ),
