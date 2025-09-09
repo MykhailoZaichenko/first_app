@@ -89,13 +89,14 @@ class _LoginPageState extends State<LoginPage> {
     String email = controllerEmail.text;
     String password = controllerPassword.text;
     if (confirmedEmail == email && confirmedPassword == password) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) {
             return const WidgetTree();
           },
         ),
+        (route) => false,
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
