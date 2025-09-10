@@ -13,3 +13,9 @@ class KTextStyle {
   );
   static const TextStyle descriptionTextStyle = TextStyle(fontSize: 16.0);
 }
+
+class KValues {
+  static const String basicLayout1 = 'Basic Layout1';
+  static const String description = 'This is descriprion';
+  static const String fixBug = 'Fix Bug';
+}

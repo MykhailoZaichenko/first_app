@@ -26,6 +26,7 @@ class OnboardingPage extends StatelessWidget {
                   'Welcome to the Onboarding Page',
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 20.0),
                 FilledButton(
                   onPressed: () {
                     Navigator.push(
