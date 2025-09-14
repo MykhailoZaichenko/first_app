@@ -1,3 +1,4 @@
+import 'package:first_app/views/pages/expended_flexible_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
@@ -199,6 +200,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
                 child: Text('Open AlertDialog'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ExtendedFlexiblePage();
+                      },
+                    ),
+                  );
+                },
+                child: Text('Show Flexible and Expanded'),
               ),
               FilledButton(onPressed: () {}, child: Text('Submit')),
               TextButton(onPressed: () {}, child: Text('Submit')),
