@@ -9,8 +9,25 @@ class ExtendedFlexiblePage extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Expanded(child: Container(color: Colors.teal)),
-          Expanded(flex: 2, child: Container(color: Colors.red)),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  color: Colors.teal,
+                  height: 20.0,
+                  child: Text("Hello"),
+                ),
+              ),
+              Flexible(
+                flex: 2,
+                child: Container(
+                  color: Colors.red,
+                  height: 20.0,
+                  child: Text('Hello'),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
