@@ -1,7 +1,9 @@
+import 'dart:convert';
+
+import 'package:first_app/data/classes/activity_class.dart';
 import 'package:flutter/material.dart';
 import 'package:first_app/views/widgets/container_windget.dart';
 import 'package:first_app/views/widgets/hero_widget.dart';
-import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 class CoursePage extends StatefulWidget {
@@ -12,6 +14,7 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
+  late Activity activity;
   initState() {
     getData();
     super.initState();
@@ -21,12 +24,12 @@ class _CoursePageState extends State<CoursePage> {
     var url = Uri.https('bored-api.appbrewery.com', '/random');
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      var jsonResponse =
-          convert.jsonDecode(response.body) as Map<String, dynamic>;
-      var itemCount = jsonResponse['activity'];
-      print(itemCount);
+      activity = Activity.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+      print(activity.activity);
     } else {
-      print('Request failed with status: ${response.statusCode}.');
+      throw Exception('Failed to load album');
     }
   }
 
