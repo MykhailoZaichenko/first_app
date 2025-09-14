@@ -15,7 +15,7 @@ class ContainerWindget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsetsGeometry.only(top: 10.0),
+      padding: EdgeInsetsGeometry.only(top: 2.0),
       child: Card(
         child: Padding(
           padding: EdgeInsets.all(20.0),

@@ -19,7 +19,9 @@ class HomePage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 10),
             HeroWidget(title: "Flutter  menu", nextPage: CoursePage()),
+            SizedBox(height: 5),
             Column(
               children: List.generate(3, (index) {
                 return ContainerWindget(
