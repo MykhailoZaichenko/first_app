@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:first_app/data/classes/activity_class.dart';
 import 'package:flutter/material.dart';
-import 'package:first_app/views/widgets/container_windget.dart';
 import 'package:first_app/views/widgets/hero_widget.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,20 +13,19 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  late Activity activity;
+  @override
   initState() {
     getData();
     super.initState();
   }
 
-  void getData() async {
+  Future getData() async {
     var url = Uri.https('bored-api.appbrewery.com', '/random');
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      activity = Activity.fromJson(
+      return Activity.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>,
       );
-      print(activity.activity);
     } else {
       throw Exception('Failed to load album');
     }
@@ -37,23 +35,29 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              HeroWidget(title: "Course  menu"),
-              Column(
-                children: List.generate(3, (index) {
-                  return ContainerWindget(
-                    title: 'Course Title',
-                    description: 'This is descriprion',
-                  );
-                }),
+      body: FutureBuilder(
+        future: getData(),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+          if (snapshot.hasData) {
+            Activity activity = snapshot.data;
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    HeroWidget(title: activity.activity),
+                    Text(activity.activity),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
+            );
+          } else {
+            return Center(child: Text('Error fetching data'));
+          }
+        },
       ),
     );
   }
